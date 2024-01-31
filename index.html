@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Contatos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="contatoForm">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required>
+
+        <button type="button" onclick="adicionarContato()">Cadastrar</button>
+    </form>
+
+    <table id="tabelaContatos">
+        <tr>
+            <th>Nome</th>
+            <th>Telefone</th>
+        </tr>
+    </table>
+
+    <script>
+        function adicionarContato() {
+            var nome = document.getElementById("nome").value;
+            var telefone = document.getElementById("telefone").value;
+
+            if (nome !== "" && telefone !== "") {
+                var tabela = document.getElementById("tabelaContatos");
+
+                var novaLinha = tabela.insertRow(tabela.rows.length);
+                var celulaNome = novaLinha.insertCell(0);
+                var celulaTelefone = novaLinha.insertCell(1);
+
+                celulaNome.innerHTML = nome;
+                celulaTelefone.innerHTML = telefone;
+
+                // Limpar os campos do formulário
+                document.getElementById("nome").value = "";
+                document.getElementById("telefone").value = "";
+            } else {
+                alert("Por favor, preencha todos os campos.");
+            }
+        }
+    </script>
+
+</body>
+</html>
+
